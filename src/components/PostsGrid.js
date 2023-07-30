@@ -73,6 +73,10 @@ export default class PostsGrid extends LitElement {
     }
   }
 
+  getPostURL(post) {
+      return `/tutorials/${post.slug}.html`;
+  }
+
   render() {
     return html`
       <div class=${"posts" + (this.columns == 4 ? ' four-cols' : ' three-cols')}>
@@ -80,14 +84,14 @@ export default class PostsGrid extends LitElement {
           ${this.posts.map((post) => {
             return html`
                 <li>
-                    <a href=${`/tutorial.html?post=${post.slug}`}>
+                    <a href=${this.getPostURL(post)}>
                         <div
                             class="image"
                             style=${`background-image: url(../assets/images/${post.image});`}
                         ></div>
                     </a>
 
-                    <a href=${`/tutorial.html?post=${post.slug}`}>
+                    <a href=${this.getPostURL(post)}>
                         <h3>
                             ${post.title}
                         </h3>
@@ -99,7 +103,7 @@ export default class PostsGrid extends LitElement {
                     <p>
                         ${post.excerpt}...
                     </p>
-                    <a class="read-more-btn" href=${`/tutorial.html?post=${post.slug}`}>
+                    <a class="read-more-btn" href=${this.getPostURL(post)}>
                         ${this._dictionary[this.language].buttonText}
                     </a>
                 </li>

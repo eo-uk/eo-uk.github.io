@@ -106,8 +106,7 @@ export default class PageTutorial extends BasePage {
     }
 
     getPostSlug() {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('post');
+        return window.location.pathname.replace('/tutorials/', '').replace('.html', '');
     }
 
     getPosts = async (language) => {
