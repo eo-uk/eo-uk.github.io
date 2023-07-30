@@ -93,13 +93,13 @@ export default class PageTutorial extends BasePage {
     }
 
     switchPostLanguage = async () => {
-        const posts = await this.getPosts(this._language);
+        const posts = await this.getPostsByLanguage(this._language);
         
         // get post with same id from other language posts
         const newPost = posts.find(post => post.id == this._post.id);
 
         if (!newPost) {
-            window.location = "/tutorials.html";
+            return;
         }
         
         this._post = newPost;
@@ -109,8 +109,14 @@ export default class PageTutorial extends BasePage {
         return window.location.pathname.replace('/tutorials/', '').replace('.html', '');
     }
 
-    getPosts = async (language) => {
+    getPostsByLanguage = async (language) => {
         return await fetch(`/api/${language}/posts.json`).then(data => data.json());
+    }
+
+    getPosts = async () => {
+        const enPosts = await this.getPostsByLanguage('en');
+        const trPosts = await this.getPostsByLanguage('tr');
+        return [...enPosts, ...trPosts];
     }
 
     displayPost = async (postSlug) => {
