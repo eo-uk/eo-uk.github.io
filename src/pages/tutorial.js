@@ -1,6 +1,6 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import {unsafeHTML} from 'https://cdn.jsdelivr.net/npm/lit-html@2.7.5/directives/unsafe-html.js';
-import { baseCSS } from '../src/common.js';
+import { baseCSS } from '../common.js';
 import BasePage from './base.js';
 
 import '../components/ButtonAction.js';
@@ -111,7 +111,7 @@ export default class PageTutorial extends BasePage {
     }
 
     getPosts = async (language) => {
-        return await fetch(`/data/${language}/posts.json`).then(data => data.json());
+        return await fetch(`/api/${language}/posts.json`).then(data => data.json());
     }
 
     displayPost = async (postSlug) => {

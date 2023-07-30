@@ -33,7 +33,7 @@ export default class PageTutorials extends BasePage {
     }
 
     getPosts = async (language) => {
-        const posts = await fetch(`/data/${language}/posts.json`).then(data => data.json());
+        const posts = await fetch(`/api/${language}/posts.json`).then(data => data.json());
         this._posts = this.sortByDate(posts);
     }
 
