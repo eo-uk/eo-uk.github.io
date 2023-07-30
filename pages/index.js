@@ -40,6 +40,8 @@ export default class PageIndex extends BasePage {
                 latestPostsButton: "Tüm Dersler",
             }
         }
+
+        this._posts = [];
     }
 
     updated(changedProps) {
@@ -53,19 +55,6 @@ export default class PageIndex extends BasePage {
         const posts = await fetch(`/data/${language}/posts.json`).then(data => data.json());
         this._posts = this.sortByDate(posts).slice(0, postLimit);
     }
-
-    // sortByDate(posts) {
-    //     const postLimit = 3;
-
-    //     // Sort from latest to oldest
-    //     posts.sort((a, b) => {
-    //         const dateA = new Date(a.date);
-    //         const dateB = new Date(b.date);
-    //         return dateB - dateA;
-    //     });
-
-    //     return posts.slice(0, postLimit);
-    // }
     
     render() {
         return html`
