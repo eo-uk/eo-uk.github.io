@@ -16,9 +16,11 @@ export default class PageTutorials extends BasePage {
         // Define translations
         this._dictionary = {
             en: {
+                ...this._dictionary.en,
                 title: 'Tutorials',
             },
             tr: {
+                ...this._dictionary.tr,
                 title: 'Dersler',
             }
         }

@@ -1,8 +1,6 @@
 import {LitElement, html} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
-import {routes} from '../src/routes.js';
 
 import '../components/Navbar.js';
-import '../components/LanguageSwitch.js';
 import '../components/Footer.js';
 import '../components/HeaderTop.js';
 
@@ -11,19 +9,36 @@ export default class BasePage extends LitElement {
     static properties = {
         _language: {type: String},
         _dictionary: {type: Object},
+        _routes: {type: Array},
     }
 
     constructor() {
         super();
+
+        this._dictionary = {
+            en: {
+                navbarHome: 'Home',
+                navbarAbout: 'About',
+                navbarTutorials: 'Tutorials',
+                navbarContact: 'Contact',
+            },
+            tr: {
+                navbarHome: 'Anasayfa',
+                navbarAbout: 'Hakkımda',
+                navbarTutorials: 'Dersler',
+                navbarContact: 'İletişim',
+            }
+        }
+
+        // Get user's latest language choice
         this._language = localStorage.getItem('language') || "en";
-        console.log('TTEST')
     }
 
     setLanguage = (language) => {
         this._language = language;
     }
 
-    getLocaleText(text, language) {
+    getLocaleText = (text, language) => {
         return this._dictionary[language][text];
     }
 
@@ -38,30 +53,6 @@ export default class BasePage extends LitElement {
     }
 
     getHeader() {
-        const DICTIONARY = {
-            en: {
-                Home: 'Home',
-                About: 'About',
-                Tutorials: 'Tutorials',
-                Contact: 'Contact',
-            },
-            tr: {
-                Home: 'Anasayfa',
-                About: 'Hakkımda',
-                Tutorials: 'Dersler',
-                Contact: 'İletişim',
-            }
-        }
-
-        const items = routes.map(route => {
-            return ({
-                ...route,
-                label: DICTIONARY[this._language][route.title],
-            })
-        })
-
-        console.log('test', items)
-
         return html`
             <header>
                 <eo-header-top
@@ -70,7 +61,20 @@ export default class BasePage extends LitElement {
                 ></eo-header-top>
 
                 <eo-navbar
-                    .routes=${items}
+                    .routes=${[
+                        {
+                            url: '/',
+                            label: this.getLocaleText('navbarHome', this._language),
+                        },
+                        {
+                            url: '/tutorials.html',
+                            label: this.getLocaleText('navbarTutorials', this._language),
+                        },
+                        {
+                            url: '/contact.html',
+                            label: this.getLocaleText('navbarContact', this._language),
+                        },
+                    ]}
                 ></eo-navbar>
             <header>
         `

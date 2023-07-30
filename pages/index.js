@@ -28,12 +28,14 @@ export default class PageIndex extends BasePage {
         // Define translations
         this._dictionary = {
             en: {
+                ...this._dictionary.en,
                 title: 'Home',
                 subtitle: 'Courses on Tech',
                 latestPostsTitle: "Latest Tutorials",
                 latestPostsButton: "All Tutorials",
             },
             tr: {
+                ...this._dictionary.tr,
                 title: 'Anasayfa',
                 subtitle: 'Teknoloji Hakkında Kurslar',
                 latestPostsTitle: "En Yeni Dersler",
