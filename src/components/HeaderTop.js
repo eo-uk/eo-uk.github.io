@@ -1,11 +1,12 @@
 import { LitElement, html, css } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+import { baseCSS } from '../common.js';
+
 import './IconLinkedin.js';
 import './IconGithub.js';
 import './IconEmail.js';
 import './Divider.js';
 import './LanguageSwitch.js';
 import './Logo.js';
-import { baseCSS } from '../src/common.js';
 
 export default class HeaderTop extends LitElement {
     static properties = {

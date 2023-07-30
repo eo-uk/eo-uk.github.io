@@ -1,6 +1,6 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import BasePage from './base.js';
-import { baseCSS } from '../src/common.js';
+import { baseCSS } from '../common.js';
 
 import '../components/Banner.js';
 import '../components/PostsGrid.js';
@@ -54,7 +54,7 @@ export default class PageIndex extends BasePage {
     
     getPosts = async (language) => {
         const postLimit = 3;
-        const posts = await fetch(`/data/${language}/posts.json`).then(data => data.json());
+        const posts = await fetch(`/api/${language}/posts.json`).then(data => data.json());
         this._posts = this.sortByDate(posts).slice(0, postLimit);
     }
     
