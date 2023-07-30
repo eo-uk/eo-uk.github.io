@@ -1,7 +1,7 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import {unsafeHTML} from 'https://cdn.jsdelivr.net/npm/lit-html@2.7.5/directives/unsafe-html.js';
 import { baseCSS } from '../src/common.js';
-import BasePage from './_base.js';
+import BasePage from './base.js';
 
 import '../components/ButtonAction.js';
 import '../components/Divider.js';

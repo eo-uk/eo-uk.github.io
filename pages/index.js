@@ -1,5 +1,5 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
-import BasePage from './_base.js';
+import BasePage from './base.js';
 import { baseCSS } from '../src/common.js';
 
 import '../components/Banner.js';
