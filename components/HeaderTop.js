@@ -3,6 +3,7 @@ import './IconLinkedin.js';
 import './IconGithub.js';
 import './IconEmail.js';
 import './Divider.js';
+import './LanguageSwitch.js';
 import './Logo.js';
 import { baseCSS } from '../src/common.js';
 

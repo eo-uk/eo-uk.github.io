@@ -11,9 +11,11 @@ export default class PageContact extends BasePage {
         // Define translations
         this._dictionary = {
             en: {
+                ...this._dictionary.en,
                 title: 'Contact',
             },
             tr: {
+                ...this._dictionary.tr,
                 title: 'İletişim',
             }
         }
